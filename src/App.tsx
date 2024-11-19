@@ -45,6 +45,7 @@ const initialProperties: Property[] = [
     comments: 67,
     description: "Exclusive 4 bedroom duplex with BQ. Features include swimming pool, gym, 24/7 security, and premium finishes. Perfect for expatriates and executives."
   },
+  
   {
     id: 4,
     title: "Affordable 2 Bedroom Flat in Yaba",
