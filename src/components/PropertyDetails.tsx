@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Naira, Maximize2, MapPin, Calendar, User } from 'lucide-react';
+import { X, Maximize2, MapPin, Calendar, User } from 'lucide-react';
 import { Property } from '../types';
 
 interface PropertyDetailsProps {
@@ -9,6 +9,15 @@ interface PropertyDetailsProps {
 }
 
 export function PropertyDetails({ property, onClose, onShowComments }: PropertyDetailsProps) {
+  const formatPrice = (amount: number) => {
+    return new Intl.NumberFormat('en-NG', {
+      style: 'currency',
+      currency: 'NGN',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(amount);
+  };
+
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-lg w-full max-w-3xl max-h-[90vh] overflow-y-auto">
@@ -31,8 +40,8 @@ export function PropertyDetails({ property, onClose, onShowComments }: PropertyD
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             <div className="flex items-center gap-2 text-gray-600">
-              <Naira className="w-5 h-5" />
-              <span>{property.price.toLocaleString()}/mo</span>
+              <span className="font-semibold">{formatPrice(property.price)}</span>
+              <span className="text-sm">/mo</span>
             </div>
             <div className="flex items-center gap-2 text-gray-600">
               <Maximize2 className="w-5 h-5" />

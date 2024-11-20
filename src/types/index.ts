@@ -11,7 +11,6 @@ export interface Property {
   description?: string;
 }
 
-
 export interface Comment {
   id: number;
   propertyId: number;

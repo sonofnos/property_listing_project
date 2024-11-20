@@ -1,5 +1,5 @@
 import React from 'react';
-import { Naira, MapPin, Maximize2, ThumbsUp, MessageCircle } from 'lucide-react';
+import { MapPin, Maximize2, ThumbsUp, MessageCircle } from 'lucide-react';
 import { Property } from '../types';
 
 interface PropertyCardProps extends Property {
@@ -18,6 +18,15 @@ export function PropertyCard({
   onViewDetails,
   onShowComments
 }: PropertyCardProps) {
+  const formatPrice = (amount: number) => {
+    return new Intl.NumberFormat('en-NG', {
+      style: 'currency',
+      currency: 'NGN',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(amount);
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-[1.02]">
       <div className="relative h-48">
@@ -30,8 +39,8 @@ export function PropertyCard({
         <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
         <div className="flex items-center gap-4 text-gray-600 mb-3">
           <div className="flex items-center gap-1">
-            <Naira className="w-4 h-4" />
-            <span>{price.toLocaleString()}/mo</span>
+            <span className="font-semibold">{formatPrice(price)}</span>
+            <span className="text-sm">/mo</span>
           </div>
           <div className="flex items-center gap-1">
             <Maximize2 className="w-4 h-4" />
